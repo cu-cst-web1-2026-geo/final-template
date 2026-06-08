@@ -3,50 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>პროექტის სახელი</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>KN Industry</title>
+  <link rel="stylesheet" href="css/homeStyle.css">
 </head>
 <body>
-
-  <header>
-    <nav>
-      <span class="nav__logo">პროექტის სახელი</span>
-      <div class="nav__links">
-        <a href="index.html">ძიება</a>
-        <a href="saved.html">შენახული</a>
-      </div>
-      <div class="nav__actions">
-        <span id="nav-user"></span>
-        <button id="logout-btn" type="button">გასვლა</button>
-      </div>
+  <header class="main-header">
+    <nav class="navbar">
+      <div class="logo">KN Industry</div>
+      <ul>
+        <li><a href="index.html">მთავარი</a></li>
+        <li><a href="products.html">პროდუქცია</a></li>
+        <li><a href="about.html">ჩვენ შესახებ</a></li>
+        <li><a href="contact.html">კონტაქტი</a></li>
+      </ul>
     </nav>
+
+    <div class="hero-content">
+      <h1>ყველა პროდუქტი თქვენს ხელში</h1>
+      <p>KN Industry – ჩვენ ვქმნით ხვალინდელ დღეს დღევანდელი პროდუქციით.</p>
+      <a href="products.html" class="btn-main">დაათვალიერე კატალოგი</a>
+    </div>
   </header>
 
   <main>
-
-    <!-- საძიებო / ფილტრის ფორმა -->
-    <section>
-      <form id="search-form">
-        <!-- დაამატე input ველები აქ (სულ მცირე 3 განსხვავებული ტიპი) -->
-        <button type="submit">ძიება</button>
-      </form>
+    <section class="features">
+      <h2>რატომ KN Industry?</h2>
+      <div class="features-flex">
+        <div class="feature-item">
+          <h3>ხარისხი</h3>
+          <p>უმაღლესი სტანდარტის მასალები და დეტალებისადმი ყურადღება.</p>
+        </div>
+        <div class="feature-item">
+          <h3>სერვისი</h3>
+          <p>მომხმარებელზე ორიენტირებული სწრაფი და ეფექტური მხარდაჭერა.</p>
+        </div>
+        <div class="feature-item">
+          <h3>ინოვაცია</h3>
+          <p>თანამედროვე ტექნოლოგიები თქვენი პროდუქციისთვის.</p>
+        </div>
+      </div>
     </section>
-
-    <!-- ჩატვირთვის და შეცდომის მდგომარეობები -->
-    <p id="loading-msg" hidden>იტვირთება…</p>
-    <p id="error-msg" hidden></p>
-
-    <!-- დინამიურად შექმნილი ბარათები აქ განთავსდება -->
-    <section>
-      <div id="results-grid"></div>
-    </section>
-
   </main>
 
-  <footer>
-    <!-- footer-ის შიგთავსი -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>KN Industry</h3>
+        <p>უმაღლესი ხარისხის სერვისები თქვენს სამსახურში.</p>
+      </div>
+      <div class="footer-section">
+        <h4>სწრაფი ბმულები</h4>
+        <ul class="quick-links">
+          <li><a href="index.html">მთავარი</a></li>
+          <li><a href="products.html">პროდუქცია</a></li>
+          <li><a href="contact.html">კონტაქტი</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>კონტაქტი</h4>
+        <p>ელ-ფოსტა: knindustrybank@gmail.com</p>
+        <p>მისამართი: თბილისი, საქართველო</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      2026 KN Industry. ყველა უფლება დაცულია.
+    </div>
   </footer>
-
   <script type="module" src="js/main.js"></script>
 </body>
 </html>

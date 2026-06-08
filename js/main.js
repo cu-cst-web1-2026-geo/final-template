@@ -2,7 +2,7 @@ import { fetchData, getSaved, setSaved } from './api.js';
 
 // თუ მომხმარებელი არ არის ავტორიზებული — გადამისამართება login.html-ზე
 if (!localStorage.getItem('user')) {
-  window.location.href = 'login.html';
+  window.location.href = 'index.html';
 }
 
 document.getElementById('nav-user').textContent = localStorage.getItem('user') || '';
@@ -35,3 +35,44 @@ document.getElementById('search-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   // ვალიდაცია, showLoading/showError გამოძახება, fetchData, renderResults
 });
+
+import { getAllProducts } from './api.js';
+
+const productContainer = document.querySelector('#product-grid');
+
+async function init() {
+    const productContainer = document.querySelector('#product-grid');
+    const loadingMsg = document.querySelector('#loading-msg');
+    const errorMsg = document.querySelector('#error-msg');
+
+    try {
+        loadingMsg.hidden = false;
+        errorMsg.hidden = true;
+        productContainer.innerHTML = '';
+
+        const products = await getAllProducts();
+        
+        loadingMsg.hidden = true;
+
+        if (products.length === 0) {
+            productContainer.innerHTML = '<p>Products not found.</p>';
+            return;
+        }
+
+        products.forEach(product => {
+            const card = document.createElement('article');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>ფასი: ${product.price} ₾</p>
+            `;
+            productContainer.appendChild(card);
+        });
+    } catch (err) {
+        loadingMsg.hidden = true;
+        errorMsg.hidden = false;
+        errorMsg.textContent = "Server is unavailable";
+    }
+}
+
+init();
