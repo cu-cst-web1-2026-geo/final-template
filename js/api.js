@@ -55,3 +55,14 @@ export async function CustomerAuth(loginData) {
     });
     return response;
 }
+
+export async function CustomerRegister(registrationData) {
+    const response = await fetch(`${USER_URL}/Customers/Customer-Register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(registrationData)
+    });
+    return response;
+}
