@@ -1,4 +1,5 @@
-const BASE_URL = 'https://catalog-kn-industry-webstore.duckdns.org/api';
+const CATALOG_URL = 'https://catalog-kn-industry-webstore.duckdns.org/api';
+const USER_URL = 'http://user-kn-industry-webstore.duckdns.org/api';
 
 export async function fetchData(endpoint) {
   // fetch, შეამოწმე response.ok, დააბრუნე response.json()
@@ -14,9 +15,10 @@ export function setSaved(items) {
   localStorage.setItem('savedItems', JSON.stringify(items));
 }
 
+//CATALOG
 export async function getAllProducts() {
     try {
-        const response = await fetch(`${BASE_URL}/Products/Get-All-Products`);
+        const response = await fetch(`${CATALOG_URL}/Products/Get-All-Products`);
         
         if (!response.ok) {
             throw new Error('პროდუქტების წამოღება ვერ მოხერხდა');
@@ -30,7 +32,7 @@ export async function getAllProducts() {
 }
 
 export async function createProduct(productData) {
-    const response = await fetch(`${BASE_URL}/Products/Create-Product`, {
+    const response = await fetch(`${CATALOG_URL}/Products/Create-Product`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -38,4 +40,18 @@ export async function createProduct(productData) {
         body: JSON.stringify(productData)
     });
     return response.json();
+}
+
+
+//USERS
+export async function CustomerAuth(loginData) {
+    const response = await fetch(`${USER_URL}/Auth/Customer-Login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(loginData)
+    });
+    return response;
 }

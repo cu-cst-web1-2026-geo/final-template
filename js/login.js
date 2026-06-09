@@ -1,25 +1,96 @@
-// უკვე ავტორიზებული მომხმარებელი — მთავარ გვერდზე გადამისამართება
-//if (localStorage.getItem('user')) {
-  //window.location.href = 'index.html';
-//}
+import { CustomerAuth } from './api.js';
 
-document.getElementById('login-form').addEventListener('submit', (e) => {
+if (localStorage.getItem('user')) {
+  window.location.href = 'index.html';
+}
+
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+
   e.preventDefault();
 
-  const name = document.getElementById('name-input').value.trim();
+  const nameInput = document.getElementById('name-input');
+  const passwordInput = document.getElementById('password-input'); 
+  
+  const nameValue = nameInput.value.trim();
+  const passwordValue = passwordInput ? passwordInput.value.trim() : '';
+  
   const errorEl = document.getElementById('login-error');
+  const submitBtn = e.target.querySelector('button[type="submit"]');
 
-  if (!name) {
-    errorEl.textContent = 'გთხოვთ შეიყვანოთ სახელი.';
-    errorEl.hidden = false;
+  if (!nameValue) {
+    showFeedback('გთხოვთ შეიყვანოთ სახელი.', 'error');
+    nameInput.focus();
     return;
   }
 
-  errorEl.hidden = true;
+  if (passwordInput && !passwordValue) {
+    showFeedback('გთხოვთ შეიყვანოთ პაროლი.', 'error');
+    passwordInput.focus();
+    return;
+  }
 
-  // მომხმარებლის სახელი ინახება localStorage-ში, სეტდება სესიური cookie
-  localStorage.setItem('user', name);
-  document.cookie = 'authorized=true; path=/';
+  clearFeedback();
 
-  window.location.href = 'index.html';
+  try {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'მიმდინარეობს ავტორიზაცია...';
+
+    const loginData = {
+      username: nameValue,
+      password: passwordValue 
+    };
+
+    const response = await CustomerAuth(loginData);
+
+    if (!response.ok) {
+      if (response.status === 401 || response.status === 400) {
+        throw new Error('სახელი ან პაროლი არასწორია.');
+      }
+      throw new Error('სერვერზე დაფიქსირდა შეცდომა.');
+    }
+
+    const customerData = await response.json();
+
+    showFeedback('ავტორიზაცია წარმატებულია! გადამისამართება...', 'success');
+    
+    localStorage.setItem('user', customerData.name);
+    localStorage.setItem('userId', customerData.id);
+    localStorage.setItem('userEmail', customerData.email);
+    
+    document.cookie = 'authorized=true; path=/';
+
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 1200);
+
+  } catch (error) {
+    console.error('Login Error:', error);
+    showFeedback(error.message || 'სერვერთან კავშირი ვერ დამყარდა.', 'error');
+    
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'დაწყება →';
+  }
 });
+
+function showFeedback(message, type) {
+  const errorEl = document.getElementById('login-error');
+  errorEl.textContent = message;
+  errorEl.hidden = false;
+
+  if (type === 'success') {
+    errorEl.style.backgroundColor = 'var(--white)';
+    errorEl.style.color = 'var(--burgundy-main)';
+    errorEl.style.borderColor = 'var(--primary-color)';
+    errorEl.style.borderLeft = '4px solid var(--primary-color)';
+  } else if (type === 'error') {
+    errorEl.style.backgroundColor = 'var(--burgundy-dark)';
+    errorEl.style.color = 'var(--white)';
+    errorEl.style.borderLeft = '4px solid var(--primary-color)';
+  }
+}
+
+function clearFeedback() {
+  const errorEl = document.getElementById('login-error');
+  errorEl.hidden = true;
+  errorEl.textContent = '';
+}
