@@ -1,5 +1,6 @@
 import { getAllCategories, getAllProducts, getProductsByCategory, searchProducts } from './api.js';
 
+const R2_BASE_Path = 'https://pub-c966a90ea96443f98cb7bede2669eb6f.r2.dev/';
 const categoriesList = document.getElementById('categories-list');
 const productsGrid = document.getElementById('products-grid');
 const catalogStatus = document.getElementById('catalog-status');
@@ -96,8 +97,16 @@ function renderProducts(products) {
   }
 
   products.forEach(product => {
-    const imageUrl = product.imageUrl || 'https://via.placeholder.com/250x200?text=No+Image';
-    
+    let imagePath = 'https://via.placeholder.com/250x200?text=No+Image';
+
+    if (product.imagePath) {
+      const cleanRelativePath = product.imagePath.startsWith('/') 
+        ? product.imagePath.slice(1) 
+        : product.imagePath;
+      
+      imagePath = `${R2_BASE_Path}${cleanRelativePath}`;
+    }
+
     let stockBadge = '';
     let isOutOfStock = product.stock <= 0;
 
@@ -115,11 +124,13 @@ function renderProducts(products) {
     card.className = `product-card ${isOutOfStock ? 'disabled-card' : ''}`;
     card.innerHTML = `
       <div class="image-container">
-        <img src="${imageUrl}" alt="${product.name || 'პროდუქტი'}">
-        ${stockBadge} </div>
+        <img src="${imagePath}" alt="${product.name || 'პროდუქტი'}" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x200?text=Image+Error';">
+        ${stockBadge}
+      </div>
       <div class="product-info">
         <h4>${product.name || 'უსახელო პროდუქტი'}</h4>
-        <p class="product-desc">${shortDescription}</p> <p class="product-price">${product.price ? product.price.toFixed(2) : '0.00'} ₾</p>
+        <p class="product-desc">${shortDescription}</p>
+        <p class="product-price">${product.price ? product.price.toFixed(2) : '0.00'} ₾</p>
         <button class="btn-add-to-cart" 
                 data-id="${product.id}" 
                 ${isOutOfStock ? 'disabled' : ''}>
