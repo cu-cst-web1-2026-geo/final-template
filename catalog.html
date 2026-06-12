@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KN Industry</title>
-  <link rel="stylesheet" href="css/homeStyle.css">
+  <link rel="stylesheet" href="css/catalogStyle.css">
 </head>
 <body>
 
@@ -22,41 +22,44 @@
       </ul>
 
     </nav>
-
-    <div class="hero-content">
-      <h1>ყველა პროდუქტი თქვენს ხელში</h1>
-      <p>KN Industry – ინდუსტრია, რომელიც საკმარისია.</p>
-      <a href="catalog.html" class="btn-main">დაათვალიერე კატალოგი</a>
-    </div>
-
   </header>
 
-  <main>
-
-    <section class="features">
-
-      <h2>რატომ KN Industry?</h2>
-      <div class="features-flex">
-
-        <div class="feature-item">
-          <h3>ხარისხი</h3>
-          <p>უმაღლესი სტანდარტის მასალები და დეტალებისადმი ყურადღება.</p>
-        </div>
-
-        <div class="feature-item">
-          <h3>სერვისი</h3>
-          <p>მომხმარებელზე ორიენტირებული სწრაფი და ეფექტური მხარდაჭერა.</p>
-        </div>
-
-        <div class="feature-item">
-          <h3>ინოვაცია</h3>
-          <p>თანამედროვე ტექნოლოგიები თქვენი პროდუქციისთვის.</p>
-        </div>
-
-      </div>
-
+  <main class="catalog-main">
+    
+    <section class="catalog-hero">
+      <h1>პროდუქციის კატალოგი</h1>
+      <p>იპოვნეთ თქვენთვის სასურველი ინდუსტრიული პროდუქტები</p>
     </section>
 
+    <div class="catalog-container">
+      
+      <aside class="catalog-sidebar">
+        <h3>კატეგორიები</h3>
+        
+        <ul id="categories-list" class="categories-menu">
+          <li>
+            <button class="category-btn active" data-category="all">ყველა პროდუქტი</button>
+          </li>
+          </ul>
+      </aside>
+
+      <section class="products-section">
+        
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="მოძებნე პროდუქტი სახელით...">
+            <button id="search-btn" class="btn-search">ძებნა</button>
+        </div>
+
+        <div id="catalog-status" class="catalog-status">
+          <p class="loading-text">პროდუქტები იტვირთება...</p>
+        </div>
+
+        <div id="products-grid" class="products-grid">
+          
+        </div>
+      </section>
+
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -86,7 +89,7 @@
       2026 KN Industry. ყველა უფლება დაცულია.
     </div>
   </footer>
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/catalog.js"></script>
 
 </body>
 </html>
