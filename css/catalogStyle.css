@@ -188,6 +188,57 @@ main{
   color: #666;
 }
 
+.error-container {
+  max-width: 450px;
+  margin: 2rem auto;
+  padding: 2.5rem 2rem;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--burgundy-main);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error-container h3 {
+  color: var(--burgundy-main);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-container p {
+  color: var(--text-color);
+  opacity: 0.8;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-retry {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform 0.1s;
+}
+
+.btn-retry:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-retry:active {
+  transform: scale(0.95);
+}
+
 .product-card {
   background-color: var(--white);
   border-radius: var(--border-radius);
@@ -287,26 +338,117 @@ main{
   color: var(--white);
 }
 
-/* ===== 8. მედია რექვესთები დიდი ეკრანებისთვის (Desktop) ===== */
-@media (min-width: 1024px) {
+@media (max-width: 600px) {
+  
+  .navbar {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem var(--container-padding);
+    text-align: center;
+  }
+
+  .navbar ul {
+    gap: 1.2rem; 
+    flex-wrap: wrap; 
+    justify-content: center;
+  }
+
+  .btn-signin {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .catalog-hero {
+    padding: 3rem var(--container-padding);
+    margin-bottom: 1.5rem;
+  }
+
+  .catalog-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .catalog-hero p {
+    font-size: 0.95rem;
+  }
+
   .catalog-container {
-    flex-direction: row; /* დიდ ეკრანზე მენიუ და პროდუქტები გვერდიგვერდ ჯდება */
-    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 0 var(--container-padding) 2rem var(--container-padding);
   }
 
   .catalog-sidebar {
-    width: 260px; /* ფიქსირებული სიგანე გვერდითა მენიუსთვის */
+    padding: 1rem;
+  }
+
+  .catalog-sidebar h3 {
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .category-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .products-grid {
+    gap: 1.2rem;
+  }
+
+  .product-info {
+    padding: 1.2rem;
+  }
+
+  .site-footer {
+    text-align: center;
+    padding: 2.5rem var(--container-padding) 1rem;
+  }
+
+  .footer-container {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  
+  .navbar {
+    margin: 0;
+    width: 100%;
+    padding: 2rem calc((100% - 1200px) / 2 + var(--container-padding)); 
+  }
+
+  .catalog-hero h1 {
+    font-size: 3.5rem;
+  }
+
+  .catalog-container {
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 5rem;
+  }
+
+  .catalog-sidebar {
+    width: 280px; 
     position: sticky;
-    top: 20px; /* სქროლვისას მენიუ ეკრანზე "გაიყინება" (Sticky) */
+    top: 20px;
   }
 
   .categories-menu {
-    flex-direction: column; /* დიდ ეკრანზე ვერტიკალური სიაა */
-    overflow-x: visible;
+    flex-direction: column; 
+    overflow-x: visible; 
+    gap: 0.75rem;
   }
-  
+
   .category-btn {
     width: 100%;
-    text-align: left;
+    text-align: left; 
+    padding: 0.75rem 1.2rem;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
   }
 }
