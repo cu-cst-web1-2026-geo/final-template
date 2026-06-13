@@ -1,7 +1,11 @@
 import { CustomerAuth } from './api.js';
 
 if (localStorage.getItem('user')) {
-  window.location.href = 'index.html';
+  localStorage.removeItem('user');
+  localStorage.removeItem('userId');
+  localStorage.removeItem('userEmail');
+  document.cookie = 'authorized=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+  window.location.href = 'login.html';
 }
 
 document.getElementById('login-form').addEventListener('submit', async (e) => {
@@ -53,7 +57,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 
     showFeedback('ავტორიზაცია წარმატებულია! გადამისამართება...', 'success');
     
-    localStorage.setItem('user', customerData.name);
+    localStorage.setItem('user', customerData.username);
     localStorage.setItem('userId', customerData.id);
     localStorage.setItem('userEmail', customerData.email);
     
