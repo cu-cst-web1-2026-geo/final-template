@@ -6,11 +6,16 @@ const productsGrid = document.getElementById('products-grid');
 const catalogStatus = document.getElementById('catalog-status');
 const searchInput = document.getElementById('search-input');
 const searchBtn = document.getElementById('search-btn');
+const signingBtn = document.getElementById('log-in-out');
 
 const isAuthorized = document.cookie.split('; ').some(row => row.startsWith('authorized=true'));
 
 if (!isAuthorized) {
   window.location.href = 'login.html';
+}
+
+if (isAuthorized) {
+  signingBtn.innerText = "გამოსვლა";
 }
 
 async function initCatalog() {
