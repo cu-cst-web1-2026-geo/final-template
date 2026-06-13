@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>პირადი პროფილი | KN Industry</title>
+  <link rel="stylesheet" href="css/catalogStyle.css"> <link rel="stylesheet" href="css/profileStyle.css"> </head>
+<body>
+
+  <header class="main-header">
+    <nav class="navbar">
+      
+      <div class="logo">KN Industry Store</div>
+
+      <ul>
+        <li><a href="index.html">მთავარი</a></li>
+        <li><a href="catalog.html">კატალოგი</a></li>
+        <li><a href="about.html">ჩვენ შესახებ</a></li>
+        <li><a href="profile.html">პროფილი</a></li>
+        <li><a href="login.html" class="btn-signin" id="log-in-out">შესვლა</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+  <main>
+    <div class="profile-container">
+    
+        <section class="profile-card user-settings">
+        <h2>პირადი მონაცემები ⚙️</h2>
+        <form id="profile-form">
+            <div class="form-group">
+            <label for="profile-username">მომხმარებლის სახელი (Username)</label>
+            <input type="text" id="profile-username" required>
+            </div>
+            <div class="form-group">
+            <label for="profile-email">ელ-ფოსტა</label>
+            <input type="email" id="profile-email" disabled>
+            </div>
+            <div class="form-group">
+            <label for="profile-old-password">მიმდინარე (ძველი) პაროლი</label>
+            <input type="password" id="profile-old-password" placeholder="საჭიროა პაროლის შესაცვლელად">
+            </div>
+            <div class="form-group">
+            <label for="profile-password">ახალი პაროლი</label>
+            <input type="password" id="profile-password" placeholder="ჩაწერეთ ახალი პაროლი">
+            </div>
+            <button type="button" id="data-update" class="btn-save-profile">მონაცემების განახლება</button>
+        </form>
+        </section>
+
+        <section class="profile-card orders-section">
+        <h2>ჩემი შეკვეთები 📦</h2>
+        <div id="orders-list-container" class="orders-list-container">
+            <p class="loading-orders">შეკვეთები იტვირთება...</p>
+        </div>
+        </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>KN Industry</h3>
+        <p>უმაღლესი ხარისხის სერვისები თქვენს სამსახურში.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>სწრაფი ბმულები</h4>
+        <ul class="quick-links">
+          <li><a href="index.html">მთავარი</a></li>
+          <li><a href="products.html">პროდუქცია</a></li>
+          <li><a href="contact.html">კონტაქტი</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>კონტაქტი</h4>
+        <p>ელ-ფოსტა: knindustrybank@gmail.com</p>
+        <p>მისამართი: თბილისი, საქართველო</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      2026 KN Industry. ყველა უფლება დაცულია.
+    </div>
+  </footer>
+
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>
