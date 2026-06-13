@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KN Industry</title>
+  <link rel="stylesheet" href="css/catalogStyle.css">
+  <link rel="stylesheet" href="css/cartStyle.css">
+</head>
+<body>
+
+  <header class="main-header">
+    <nav class="navbar">
+      
+      <div class="logo">KN Industry Store</div>
+
+      <ul>
+        <li><a href="index.html">მთავარი</a></li>
+        <li><a href="catalog.html">კატალოგი</a></li>
+        <li><a href="about.html">ჩვენ შესახებ</a></li>
+        <li><a href="contact.html">კონტაქტი</a></li>
+        <li>
+          <button id="cart-toggle-btn" class="cart-icon-btn">
+            🛒 <span id="cart-badge" class="cart-badge">0</span>
+          </button>
+        </li>
+        <li><a href="login.html" class="btn-signin">შესვლა</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+  <main class="catalog-main">
+    
+    <section class="catalog-hero">
+      <h1>პროდუქციის კატალოგი</h1>
+      <p>იპოვნეთ თქვენთვის სასურველი ინდუსტრიული პროდუქტები</p>
+    </section>
+
+    <div class="catalog-container">
+      
+      <aside class="catalog-sidebar">
+        <h3>კატეგორიები</h3>
+        
+        <ul id="categories-list" class="categories-menu">
+          <li>
+            <button class="category-btn active" data-category="all">ყველა პროდუქტი</button>
+          </li>
+          </ul>
+      </aside>
+
+      <section class="products-section">
+        
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="მოძებნე პროდუქტი სახელით...">
+            <button id="search-btn" class="btn-search">ძებნა</button>
+        </div>
+
+        <div id="catalog-status" class="catalog-status">
+          <p class="loading-text">პროდუქტები იტვირთება...</p>
+        </div>
+
+        <div id="products-grid" class="products-grid">
+          
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>KN Industry</h3>
+        <p>უმაღლესი ხარისხის სერვისები თქვენს სამსახურში.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>სწრაფი ბმულები</h4>
+        <ul class="quick-links">
+          <li><a href="index.html">მთავარი</a></li>
+          <li><a href="products.html">პროდუქცია</a></li>
+          <li><a href="contact.html">კონტაქტი</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>კონტაქტი</h4>
+        <p>ელ-ფოსტა: knindustrybank@gmail.com</p>
+        <p>მისამართი: თბილისი, საქართველო</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      2026 KN Industry. ყველა უფლება დაცულია.
+    </div>
+  </footer>
+
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h2>შენი კალათა</h2>
+      <button id="cart-close-btn" class="cart-close-btn">&times;</button>
+    </div>
+
+    <div id="cart-items-container" class="cart-items-container">
+      <p class="empty-cart-text">კალათა ცარიელია</p>
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-total-section">
+        <span>სულ ჯამი:</span>
+        <span id="cart-total-price">0.00 ₾</span>
+      </div>
+      <button id="clear-cart-btn" class="btn-clear-cart">კალათის გასუფთავება 🗑️</button>
+      <button class="btn-checkout">შეკვეთის გაფორმება</button>
+    </div>
+  </div>
+
+  <div id="cart-overlay" class="cart-overlay"></div>
+
+  <script type="module" src="js/catalog.js"></script>
+  <script type="module" src="js/cart.js"></script>
+
+</body>
+</html>
