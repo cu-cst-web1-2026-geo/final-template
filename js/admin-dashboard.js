@@ -17,6 +17,7 @@ if (!isAdmin) {
   window.location.replace('admin-login.html');
 }
 
+const R2_BASE_Path = 'https://pub-c966a90ea96443f98cb7bede2669eb6f.r2.dev/';
 const adminGreeting = document.getElementById('admin-greeting');
 const btnAdminLogout = document.getElementById('btn-admin-logout');
 
@@ -144,11 +145,20 @@ async function renderProducts() {
     }
 
     products.reverse().forEach(prod => {
+        let imagePath = '';
+        if (prod.imagePath) {
+            const cleanRelativePath = prod.imagePath.startsWith('/') 
+                ? prod.imagePath.slice(1) 
+                : prod.imagePath;
+            
+            imagePath = `${R2_BASE_Path}${cleanRelativePath}`;
+        }
+
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${prod.id}</td>
         <td>
-          <img src="${prod.imageUrl || 'https://via.placeholder.com/45'}" class="table-prod-img" alt="${prod.name}">
+          <img src="${imagePath || 'https://via.placeholder.com/45'}" class="table-prod-img" alt="${prod.name}">
         </td>
         <td><strong>${prod.name}</strong><br><small style="color:#777">${prod.description || ''}</small></td>
         <td>
@@ -198,7 +208,7 @@ productForm.addEventListener('submit', async (e) => {
       formData.append('CategoryId', prodCategorySelect.value);
       
       if (prodImageInput.files) {
-        formData.append('ImageFile', prodImageInput.files);
+        formData.append('ImageFile', prodImageInput.files[0]);
       } else {
         alert('პროდუქტის შესაქმნელად სურათის ატვირთვა აუცილებელია!');
         return;
@@ -288,7 +298,7 @@ productsTableBody.addEventListener('click', async (e) => {
       if (fileInput.files) {
         try {
           const imgFormData = new FormData();
-          imgFormData.append('imageFile', fileInput.files);
+          imgFormData.append('imageFile', fileInput.files[0]);
           
           await updateProductImage(id, imgFormData);
           alert('პროდუქტის სურათი წარმატებით შეიცვალა! 📷');
