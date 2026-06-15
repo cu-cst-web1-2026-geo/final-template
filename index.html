@@ -7,10 +7,9 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
   <header>
     <nav>
-      <span class="nav__logo">პროექტის სახელი</span>
+      <span class="nav__logo">ქვეყნების მიმოხილვა</span>
       <div class="nav__links">
         <a href="index.html">ძიება</a>
         <a href="saved.html">შენახული</a>
@@ -21,32 +20,41 @@
       </div>
     </nav>
   </header>
-
   <main>
-
-    <!-- საძიებო / ფილტრის ფორმა -->
-    <section>
+    <section class="search-section">
       <form id="search-form">
-        <!-- დაამატე input ველები აქ (სულ მცირე 3 განსხვავებული ტიპი) -->
+        <input
+          type="text"
+          id="search-input"
+          name="search"
+          placeholder="მოძებნე ქვეყანა..."
+          minlength="2"
+          required
+        />
+        <select id="region-filter" name="region">
+          <option value="">ყველა რეგიონი</option>
+          <option value="Africa">აფრიკა</option>
+          <option value="Americas">ამერიკა</option>
+          <option value="Asia">აზია</option>
+          <option value="Europe">ევროპა</option>
+          <option value="Oceania">ოკეანია</option>
+        </select>
+        <label class="form__checkbox">
+          <input type="checkbox" id="large-only" name="large-only">
+          მხოლოდ 10მლნ+ მოსახლეობა
+        </label>
         <button type="submit">ძიება</button>
       </form>
     </section>
-
-    <!-- ჩატვირთვის და შეცდომის მდგომარეობები -->
     <p id="loading-msg" hidden>იტვირთება…</p>
     <p id="error-msg" hidden></p>
-
-    <!-- დინამიურად შექმნილი ბარათები აქ განთავსდება -->
-    <section>
-      <div id="results-grid"></div>
+    <section class="results-section">
+      <div id="results-grid" class="results-grid"></div>
     </section>
-
   </main>
-
   <footer>
-    <!-- footer-ის შიგთავსი -->
+    <p>© 2026 ქვეყნების მიმოხილვა | მონაცემები: REST Countries API</p>
   </footer>
-
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
