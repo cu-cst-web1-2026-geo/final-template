@@ -118,7 +118,7 @@ export async function updateProduct(id, productData) {
     body: JSON.stringify(productData)
   });
   if (!response.ok) throw new Error('პროდუქტის განახლება ვერ მოხერხდა');
-  return await response.json();
+  return true;
 }
 
 export async function deleteProduct(id) {
@@ -127,7 +127,7 @@ export async function deleteProduct(id) {
     headers: getAdminHeaders()
   });
   if (!response.ok) throw new Error('პროდუქტის წაშლა ვერ მოხერხდა');
-  return await response.json();
+  return true;
 }
 
 export async function updateProductStock(id, newStock) {
@@ -136,7 +136,7 @@ export async function updateProductStock(id, newStock) {
     headers: getAdminHeaders()
   });
   if (!response.ok) throw new Error('მარაგის განახლება ვერ მოხერხდა');
-  return await response.json();
+  return true;
 }
 
 export async function updateProductPrice(id, newPrice) {
@@ -145,7 +145,7 @@ export async function updateProductPrice(id, newPrice) {
     headers: getAdminHeaders()
   });
   if (!response.ok) throw new Error('ფასის განახლება ვერ მოხერხდა');
-  return await response.json();
+  return true;
 }
 
 export async function updateProductImage(id, imageFormData) {
@@ -155,7 +155,7 @@ export async function updateProductImage(id, imageFormData) {
     body: imageFormData
   });
   if (!response.ok) throw new Error('სურათის განახლება ვერ მოხერხდა');
-  return await response.json();
+  return true;
 }
 
 //USERS
