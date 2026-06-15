@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ადმინ პანელი | KN Industry</title>
+  <link rel="stylesheet" href="css/adminDashboardStyle.css">
+</head>
+<body>
+
+    <header class="admin-header">
+        <div class="admin-logo-zone">
+        <span class="logo-text">KN Industry</span>
+        <span class="badge-admin">Admin Panel 🛠️</span>
+        </div>
+        <div class="admin-user-zone">
+        <span id="admin-greeting">მოგესალმებით, ადმინ</span>
+        <button id="btn-admin-logout" class="btn-logout-admin">გამოსვლა 🚪</button>
+        </div>
+    </header>
+
+    <main class="dashboard-wrapper">
+
+        <aside class="sidebar">
+            <button class="sidebar-btn active" data-tab="products-tab">📦 პროდუქტები</button>
+            <button class="sidebar-btn" data-tab="categories-tab">📁 კატეგორიები</button>
+        </aside>
+
+        <div class="main-content">
+            
+            <section id="products-tab" class="tab-content active">
+            <div class="content-header">
+                <h2>პროდუქტების მართვა</h2>
+                <p>ახალი პროდუქტის დამატება, ფასის, მარაგისა და სურათის განახლება.</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dash-card">
+                <h3>პროდუქტის დამატება / შეცვლა ➕</h3>
+                <form id="product-form" enctype="multipart/form-data">
+                    <input type="hidden" id="product-id"> 
+                    
+                    <div class="form-group">
+                    <label for="prod-name">სახელი *</label>
+                    <input type="text" id="prod-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                    <label for="prod-description">აღწერა</label>
+                    <textarea id="prod-description" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                    <div class="form-group">
+                        <label for="prod-price">ფასი (₾) *</label>
+                        <input type="number" id="prod-price" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-stock">მარაგი *</label>
+                        <input type="number" id="prod-stock" required>
+                    </div>
+                    </div>
+                    
+                    <div class="form-group">
+                    <label for="prod-category">კატეგორია *</label>
+                    <select id="prod-category" required>
+                        <option value="">აირჩიეთ კატეგორია</option>
+                    </select>
+                    </div>
+                    
+                    <div class="form-group">
+                    <label for="prod-image">პროდუქტის სურათი *</label>
+                    <input type="file" id="prod-image" accept="image/*">
+                    </div>
+                    
+                    <button type="submit" class="btn-dash-submit">პროდუქტის შენახვა</button>
+                </form>
+                </div>
+
+                <div class="dash-card">
+                <h3>არსებული პროდუქტები 📋</h3>
+                <div class="table-responsive">
+                    <table class="dash-table">
+                    <thead>
+                        <tr>
+                        <th>ID</th>
+                        <th>სურათი</th>
+                        <th>სახელი</th>
+                        <th>ფასი</th>
+                        <th>მარაგი</th>
+                        <th>მოქმედება</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-table-body">
+                        <tr>
+                        <td colspan="6" class="text-center">პროდუქტები იტვირთება...</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+            </section>
+
+            <section id="categories-tab" class="tab-content">
+            <div class="content-header">
+                <h2>კატეგორიების მართვა</h2>
+                <p>ახალი კატეგორიების შექმნა, სახელის შეცვლა და წაშლა.</p>
+            </div>
+
+            <div class="dashboard-grid compact">
+                <div class="dash-card">
+                <h3>კატეგორიის დამატება 📁</h3>
+                <form id="category-form">
+                    <input type="hidden" id="category-id">
+                    <div class="form-group">
+                    <label for="cat-name">კატეგორიის სახელი *</label>
+                    <input type="text" id="cat-name" required placeholder="მაგ. ელექტრონიკა">
+                    </div>
+                    <button type="submit" class="btn-dash-submit">კატეგორიის შენახვა</button>
+                </form>
+                </div>
+
+                <div class="dash-card">
+                <h3>არსებული კატეგორიები 📋</h3>
+                <div class="table-responsive">
+                    <table class="dash-table">
+                    <thead>
+                        <tr>
+                        <th>ID</th>
+                        <th>კატეგორია</th>
+                        <th>მოქმედება</th>
+                        </tr>
+                    </thead>
+                    <tbody id="categories-table-body">
+                        <tr>
+                        <td colspan="3" class="text-center">კატეგორიები იტვირთება...</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script type="module" src="js/admin-dashboard.js"></script>
+</body>
+</html>
