@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ადმინისტრატორის ავტორიზაცია | KN Industry</title>
+  <link rel="stylesheet" href="css/adminLoginStyle.css">
+</head>
+<body>
+
+  <section class="admin-login-wrapper">
+    <div class="admin-login-card">
+      
+      <div class="admin-login-header">
+        <div class="admin-logo">KN Industry</div>
+        <h1>Control Panel 🔐</h1>
+        <p>გთხოვთ გაიაროთ ავტორიზაცია სისტემაში შესასვლელად</p>
+      </div>
+
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label for="admin-name">სახელი / საიდენტიფიკაციო</label>
+          <input type="name" id="admin-name" placeholder="შეიყვანეთ სახელი..." required autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label for="admin-password">პაროლი</label>
+          <input type="password" id="admin-password" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" id="btn-admin-login" class="btn-admin-submit">სისტემაში შესვლა</button>
+      </form>
+
+      <div class="admin-login-footer">
+        <a href="index.html">← მთავარ გვერდზე დაბრუნება</a>
+      </div>
+
+    </div>
+  </section>
+
+  <script type="module" src="js/admin-login.js"></script>
+</body>
+</html>
