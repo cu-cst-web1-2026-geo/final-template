@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="In Vera Dent — სტომატოლოგიური სერვისები">
+  <title>სერვისები | In Vera Dent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">მთავარ შინაარსზე გადასვლა</a>
+
+<header>
+  <nav class="navbar" aria-label="მთავარი ნავიგაცია">
+    <div class="navbar__inner">
+      <a href="index.html" class="logo">
+        <div class="logo__mark">🦷</div>
+        IN VERA <span>DENT</span>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-links__item"><a href="index.html" class="nav-links__link">მთავარი</a></li>
+        <li class="nav-links__item"><a href="services.html" class="nav-links__link nav-links__link--active">სერვისები</a></li>
+        <li class="nav-links__item"><a href="prices.html" class="nav-links__link">ფასები</a></li>
+        <li class="nav-links__item"><a href="contact.html" class="nav-links__link">კონტაქტი</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="tel:599932616" class="btn btn--ghost btn--sm">📞 599 93 26 16</a>
+        <a href="contact.html#book" class="btn btn--primary btn--sm">ჩაწერა</a>
+      </div>
+
+      <button class="nav-hamburger" aria-label="მენიუ" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-drawer" role="dialog" aria-label="მობილური მენიუ">
+    <a href="index.html"><span class="nav-drawer__icon">🏠</span> მთავარი</a>
+    <a href="services.html"><span class="nav-drawer__icon">🦷</span> სერვისები</a>
+    <a href="prices.html"><span class="nav-drawer__icon">💰</span> ფასები</a>
+    <a href="contact.html"><span class="nav-drawer__icon">📬</span> კონტაქტი</a>
+    <div class="nav-drawer__footer">
+      <a href="tel:599932616" class="btn btn--secondary btn--full">📞 599 93 26 16</a>
+      <a href="contact.html#book" class="btn btn--primary btn--full">ჩაწერა ახლავე</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="label text-teal anim-fade-up">სერვისები</p>
+      <h1 class="display-lg anim-fade-up delay-1">ჩვენი სამედიცინო სერვისები</h1>
+      <p class="body-md text-soft anim-fade-up delay-2 page-subtitle">
+        სრული სტომატოლოგიური სპექტრი — ერთ სახლში, ერთი გუნდის ხელით
+      </p>
+    </div>
+  </section>
+
+  <!-- Category Pill Navigation (populated + handled by JS) -->
+  <section class="pill-nav-section" aria-label="კატეგორიების ნავიგაცია">
+    <div class="container">
+      <nav class="service-pills" id="pillNav" aria-label="სერვისების კატეგორიები">
+        <a href="#therapy"      class="service-pill service-pill--active">🔧 თერაპია</a>
+        <a href="#orthodontics" class="service-pill">😁 ორთოდონტია</a>
+        <a href="#implant"      class="service-pill">🦷 იმპლანტი</a>
+        <a href="#surgery"      class="service-pill">🏥 ქირურგია</a>
+        <a href="#prosthetics"  class="service-pill">👑 ორთოპედია</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Therapy -->
+  <section class="service-detail-section" id="therapy" data-category="therapy" aria-labelledby="therapy-title">
+    <div class="container">
+      <article class="service-detail">
+        <div class="service-detail__img reveal reveal--left">
+          <img src="img/service-therapy.jpg" alt="თერაპიული სტომატოლოგია — კარიესის მკურნალობა" loading="lazy">
+        </div>
+        <div class="service-detail__content reveal reveal--right">
+          <div class="service-detail__icon">🔧</div>
+          <p class="label text-teal">თერაპიული სტომატოლოგია</p>
+          <h2 id="therapy-title">კარიესის მკურნალობა</h2>
+          <p class="body-md text-soft mt-12">
+            ვიყენებთ თანამედროვე კომპოზიციურ საბჟენ მასალებს, რომლებიც ემთხვევა ბუნებრივი კბილის ფერს და გარმჭირვალობას
+            — სწრაფად და ეფექტურად.
+          </p>
+          <ul class="service-features">
+            <li>კარიესის პროფილაქტიკა და მკურნალობა</li>
+            <li>ჰელიო საბჟენი მასალები</li>
+            <li>ფესვის არხის მკურნალობა</li>
+            <li>პირის ღრუს ჰიგიენა, პროფესიონალური წმენდა</li>
+          </ul>
+          <div class="service-detail__footer">
+            <div class="service-detail__price">50 ₾-დან</div>
+            <a href="contact.html#book" class="btn btn--primary">ჩაწერა →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Orthodontics -->
+  <section class="service-detail-section section--alt" id="orthodontics" data-category="orthodontics" aria-labelledby="ortho-title">
+    <div class="container">
+      <article class="service-detail service-detail--reverse">
+        <div class="service-detail__img reveal reveal--right">
+          <img src="img/service-orthodontics.jpg" alt="ბრეკეტები და ინვიზელაინი" loading="lazy">
+        </div>
+        <div class="service-detail__content reveal reveal--left">
+          <div class="service-detail__icon">😁</div>
+          <p class="label text-teal">ორთოდონტია</p>
+          <h2 id="ortho-title">ბრეკეტები და ინვიზელაინი</h2>
+          <p class="body-md text-soft mt-12">
+            კბილების გასწორება ბრეკეტებით ან გამჭვირვალე კაპებით. მკურნალობის საშუალო ხანგრძლივობა 12–24 თვე, ინდივიდუალური გეგმის მიხედვით.
+          </p>
+          <ul class="service-features">
+            <li>მეტალის და კერამიკული ბრეკეტები</li>
+            <li>ინვიზელაინი</li>
+            <li>კორექცია</li>
+            <li>რეტეინერი ან კაპა მკურნალობის შემდეგ</li>
+          </ul>
+          <div class="service-detail__footer">
+            <div class="service-detail__price">1 000 ₾-დან</div>
+            <a href="contact.html#book" class="btn btn--primary">ჩაწერა →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Implantology -->
+  <section class="service-detail-section" id="implant" data-category="implant" aria-labelledby="implant-title">
+    <div class="container">
+      <article class="service-detail">
+        <div class="service-detail__img reveal reveal--left">
+          <img src="img/service-implant.jpg" alt="კბილის იმპლანტი — In Vera Dent" loading="lazy">
+        </div>
+        <div class="service-detail__content reveal reveal--right">
+          <div class="service-detail__icon">🦷</div>
+          <p class="label text-teal">იმპლანტოლოგია</p>
+          <h2 id="implant-title">კბილის იმპლანტი</h2>
+          <p class="body-md text-soft mt-12">
+            ვიყენებთ SGS, MIS და Straumann იმპლანტებს.
+            ოპერაცია ტარდება ადგილობრივი ანესთეზიით.
+          </p>
+          <ul class="service-features">
+            <li>Straumann, MIS, SGS</li>
+            <li>კბილის ამოღება + დაუყოვნებელი იმპლანტაცია</li>
+            <li>ძვლის მოდელირება</li>
+            <li>ყოველწლიური პოსტ-ოპ კონტროლი</li>
+          </ul>
+          <div class="service-detail__footer">
+            <div class="service-detail__price">800 ₾-დან</div>
+            <a href="contact.html#book" class="btn btn--primary">ჩაწერა →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Surgery -->
+  <section class="service-detail-section section--alt" id="surgery" data-category="surgery" aria-labelledby="surgery-title">
+    <div class="container">
+      <article class="service-detail service-detail--reverse">
+        <div class="service-detail__img reveal reveal--right">
+          <img src="img/about-clinic.jpg" alt="სტომატოლოგიური ქირურგია" loading="lazy">
+        </div>
+        <div class="service-detail__content reveal reveal--left">
+          <div class="service-detail__icon">🏥</div>
+          <p class="label text-teal">ქირურგია</p>
+          <h2 id="surgery-title">ქირურგიული სტომატოლოგია</h2>
+          <p class="body-md text-soft mt-12">
+            მარტივი და რთული ექსტრაქციები, მე-8 კბილის ამოღება.
+          </p>
+          <ul class="service-features">
+            <li>მარტივი და რთული ექსტრაქცია</li>
+            <li>მე-8 კბილი</li>
+            <li>აბსცესის გაკვეთა</li>
+            <li>ფესვის მწვერვალის რეზექცია</li>
+          </ul>
+          <div class="service-detail__footer">
+            <div class="service-detail__price">50 ₾-დან</div>
+            <a href="contact.html#book" class="btn btn--primary">ჩაწერა →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Prosthetics -->
+  <section class="service-detail-section section--alt" id="prosthetics" data-category="prosthetics" aria-labelledby="prosthetics-title">
+    <div class="container">
+      <article class="service-detail service-detail--reverse">
+        <div class="service-detail__img reveal reveal--right">
+          <img src="img/smile-whitening-2.jpg" alt="კბილის ორთოპედია — გვირგვინები" loading="lazy">
+        </div>
+        <div class="service-detail__content reveal reveal--left">
+          <div class="service-detail__icon">👑</div>
+          <p class="label text-teal">ორთოპედია</p>
+          <h2 id="prosthetics-title">გვირგვინები და ხიდები</h2>
+          <p class="body-md text-soft mt-12">
+            მეტალო კერამიკის, ცირკონო კერამიკის გვირგვინები, ხიდები პროთეზები — ნაწილობრივი და სრული.
+          </p>
+          <ul class="service-features">
+            <li>მეტალო კერამიკის გვირგვინი</li>
+            <li>ცირკონო კერამიკის გვირგვინი</li>
+            <li>ფირფიტოვანი პროთეზი</li>
+            <li>ვალოპლასტის პროთეზი</li>
+          </ul>
+          <div class="service-detail__footer">
+            <div class="service-detail__price">180 ₾-დან</div>
+            <a href="contact.html#book" class="btn btn--primary">ჩაწერა →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section--sm">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2>პირველი კონსულტაცია — უფასო!</h2>
+        <p>ჩაწერეთ ახლავე და ექიმი შეაფასებს თქვენს კბილებს უფასოდ</p>
+        <div class="cta-banner__actions">
+          <a href="contact.html#book" class="btn btn--white">📅 ჩაწერა ახლავე</a>
+          <a href="prices.html" class="btn btn--outline-white">💰 ფასების სია</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="logo">
+          <div class="logo__mark">🦷</div>
+          IN VERA <span>DENT</span>
+        </a>
+        <p class="mt-12">პროფესიონალური სტომატოლოგიური კლინიკა თბილისში. გამოცდილება, სიახლე, კომფორტი.</p>
+      </div>
+      <div class="footer__col">
+        <h4>სერვისები</h4>
+        <ul>
+          <li><a href="services.html#therapy">თერაპია</a></li>
+          <li><a href="services.html#surgery">ქირურგია</a></li>
+          <li><a href="services.html#orthodontics">ორთოდონტია</a></li>
+          <li><a href="services.html#implant">იმპლანტოლოგია</a></li>
+          <li><a href="services.html#prosthetics">ორთოპედია</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>ნავიგაცია</h4>
+        <ul>
+          <li><a href="index.html">მთავარი</a></li>
+          <li><a href="services.html">სერვისები</a></li>
+          <li><a href="prices.html">ფასები</a></li>
+          <li><a href="contact.html">კონტაქტი</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>კონტაქტი</h4>
+        <ul>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=41.7025,44.788" target="_blank" rel="noopener">📍 თბილისი, ვ.ბარნოვის 24</a></li>
+          <li><a href="tel:599932616">📞 599 93 26 16</a></li>
+          <li><a href="mailto:inveradent@gmail.com">✉️ inveradent@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 In Vera Dent. ყველა უფლება დაცულია.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:599932616" class="fab-phone" aria-label="დარეკვა">📞</a>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
