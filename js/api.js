@@ -1,15 +1,16 @@
-const BASE_URL = ''; // შეცვალე შენი API-ს base URL-ით
-
+//API-ს მთავარი მისამართი
+const BASE_URL = 'https://restcountries.com/v3.1';
 export async function fetchData(endpoint) {
-  // fetch, შეამოწმე response.ok, დააბრუნე response.json()
+  const response = await fetch(`${BASE_URL}${endpoint}`);
+  if (!response.ok) {
+    throw new Error(`შეცდომა: ${response.status}`);
+  }
+  return response.json();
 }
-
-// localStorage-ის დამხმარე ფუნქციები — იმპორტი გაარ სადაც ჩანაწერები გჭირდება
 export function getSaved() {
   const raw = localStorage.getItem('savedItems');
   return raw ? JSON.parse(raw) : [];
 }
-
 export function setSaved(items) {
   localStorage.setItem('savedItems', JSON.stringify(items));
 }
