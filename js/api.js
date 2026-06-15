@@ -14,17 +14,6 @@ export function setSaved(items) {
 }
 
 //CATALOG
-export async function createProduct(productData) {
-    const response = await fetch(`${CATALOG_URL}/Products/Create-Product`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(productData)
-    });
-    return response.json();
-}
-
 async function fetchDataCatalog(endpoint) {
   try {
     const response = await fetch(`${CATALOG_URL}${endpoint}`, {
@@ -67,6 +56,91 @@ export async function getProductsByCategory(categoryId) {
 
 export async function searchProducts(name) {
   return await fetchDataCatalog(`/Products/Search-Products?name=${name}`);
+}
+
+export async function createCategory(categoryData) {
+  const response = await fetch(`${CATALOG_URL}/api/Categories/Create-Category`, {
+    method: 'POST',
+    headers: getAdminHeaders(),
+    body: JSON.stringify(categoryData)
+  });
+  if (!response.ok) throw new Error('კატეგორიის შექმნა ვერ მოხერხდა');
+  return await response.json();
+}
+
+export async function updateCategory(id, categoryData) {
+  const response = await fetch(`${CATALOG_URL}/api/Categories/Update-Category/${id}`, {
+    method: 'PUT',
+    headers: getAdminHeaders(),
+    body: JSON.stringify(categoryData)
+  });
+  if (!response.ok) throw new Error('კატეგორიის განახლება ვერ მოხერხდა');
+  return true;
+}
+
+export async function deleteCategory(id) {
+  const response = await fetch(`${CATALOG_URL}/api/Categories/Delete-Category/${id}`, {
+    method: 'DELETE',
+    headers: getAdminHeaders()
+  });
+  if (!response.ok) throw new Error('კატეგორიის წაშლა ვერ მოხერხდა. შესაძლოა მასზე მიბმულია პროდუქტები');
+  return true;
+}
+
+export async function createProduct(formData) {
+  const response = await fetch(`${CATALOG_URL}/api/Products/Create-Product`, {
+    method: 'POST',
+    headers: getAdminHeaders(true),
+    body: formData
+  });
+  if (!response.ok) throw new Error('პროდუქტის შექმნა ვერ მოხერხდა');
+  return await response.json();
+}
+export async function updateProduct(id, productData) {
+  const response = await fetch(`${CATALOG_URL}/api/Products/Update-Product/${id}`, {
+    method: 'PUT',
+    headers: getAdminHeaders(),
+    body: JSON.stringify(productData)
+  });
+  if (!response.ok) throw new Error('პროდუქტის განახლება ვერ მოხერხდა');
+  return await response.json();
+}
+
+export async function deleteProduct(id) {
+  const response = await fetch(`${CATALOG_URL}/api/Products/Delete-Product/${id}`, {
+    method: 'DELETE',
+    headers: getAdminHeaders()
+  });
+  if (!response.ok) throw new Error('პროდუქტის წაშლა ვერ მოხერხდა');
+  return await response.json();
+}
+
+export async function updateProductStock(id, newStock) {
+  const response = await fetch(`${CATALOG_URL}/api/Products/Update-Product-Stock/${id}?newStock=${newStock}`, {
+    method: 'PATCH',
+    headers: getAdminHeaders()
+  });
+  if (!response.ok) throw new Error('მარაგის განახლება ვერ მოხერხდა');
+  return await response.json();
+}
+
+export async function updateProductPrice(id, newPrice) {
+  const response = await fetch(`${CATALOG_URL}/api/Products/Update-Product-Price/${id}?newPrice=${newPrice}`, {
+    method: 'PATCH',
+    headers: getAdminHeaders()
+  });
+  if (!response.ok) throw new Error('ფასის განახლება ვერ მოხერხდა');
+  return await response.json();
+}
+
+export async function updateProductImage(id, imageFormData) {
+  const response = await fetch(`${CATALOG_URL}/api/Products/Update-Product-Image/${id}`, {
+    method: 'PATCH',
+    headers: getAdminHeaders(true),
+    body: imageFormData
+  });
+  if (!response.ok) throw new Error('სურათის განახლება ვერ მოხერხდა');
+  return await response.json();
 }
 
 //USERS
