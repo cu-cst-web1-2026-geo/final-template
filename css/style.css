@@ -1,1 +1,316 @@
-
+/*custom properties*/
+:root {
+  --primary: #2563eb;
+  --secondary: #16a34a;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --card-bg: #ffffff;
+  --shadow: 0 2px 8px rgba(0,0,0,0.1);
+  --radius: 8px;
+  --gap: 1rem;
+  --nav-height: 60px;
+}
+/*reset*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+/*header*/
+header {
+  background: var(--primary);
+  color: white;
+  height: var(--nav-height);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+/*nav Flexbox*/
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 2rem;
+}
+.nav__logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+.nav__links {
+  display: flex;
+  gap: var(--gap);
+}
+.nav__links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  transition: background 0.2s;
+}
+.nav__links a:hover {
+  background: rgba(255,255,255,0.2);
+}
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  color: white;
+}
+#logout-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#logout-btn:hover {
+  background: rgba(255,255,255,0.35);
+}
+/*main*/
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+/*form*/
+#search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  align-items: center;
+  margin-bottom: 2rem;
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+#search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.6rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+#search-input:focus {
+  border-color: var(--primary);
+}
+#region-filter {
+  padding: 0.6rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+}
+.form__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+#search-form button[type="submit"] {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#search-form button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+/*loading/error*/
+#loading-msg {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+#error-msg {
+  text-align: center;
+  padding: 1rem;
+  color: #dc2626;
+  background: #fee2e2;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+/*results grid/CSS Grid*/
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--gap);
+}
+/*card*/
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+.card__flag {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.card__name {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.8rem 1rem 0.4rem;
+}
+.card__info {
+  font-size: 0.85rem;
+  padding: 0.1rem 1rem;
+  color: #64748b;
+}
+.card__save-btn {
+  display: block;
+  width: calc(100% - 2rem);
+  margin: 0.8rem 1rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--bg);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+.card__save-btn:hover {
+  background: #e2e8f0;
+}
+/*saved grid/CSS Grid*/
+.saved-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--gap);
+}
+/*login page*/
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+.login-form {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+.login-form h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.form__group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.form__group input,
+.form__group select,
+.form__group textarea {
+  padding: 0.6rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.form__group input:focus,
+.form__group select:focus,
+.form__group textarea:focus {
+  border-color: var(--primary);
+}
+.form__error {
+  color: #dc2626;
+  font-size: 0.85rem;
+  min-height: 1rem;
+}
+.login-form button[type="submit"] {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.login-form button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+/*footer*/
+footer {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+/*მობილური*/
+@media (max-width: 600px) {
+  nav {
+    padding: 0 1rem;
+  }
+  .nav__logo {
+    font-size: 1rem;
+  }
+  main {
+    padding: 1rem;
+  }
+  #search-form {
+    flex-direction: column;
+  }
+  #search-input {
+    width: 100%;
+  }
+  .results-grid,
+  .saved-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/*desktop*/
+@media (min-width: 1024px) {
+  .results-grid,
+  .saved-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  main {
+    padding: 2rem 3rem;
+  }
+}
