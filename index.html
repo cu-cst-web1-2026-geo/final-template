@@ -23,10 +23,106 @@
     </nav>
 
   </header>
+
   <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero__bg-text" aria-hidden="true">MtveriFM</div>
 
-    <h1>hello there, this is my main page, active music widget and additional info will go here.</h1>
+      <div class="hero__center">
+        <p class="hero__tagline">Live Erektronik Radio</p>
+        <h1 class="hero__title">Mtveri<span class="hero__title--accent">FM</span></h1>
 
+        <!-- Player Card -->
+        <article class="player-card" id="player-card">
+
+          <div class="player-card__now-playing">
+            <span class="player-card__on-air">On Air</span>
+            <span class="player-card__np-track" id="np-track">Loading...</span>
+          </div>
+
+          <div class="player-card__body">
+
+            <div class="player-card__track-info">
+              <div class="player-card__track-title" id="track-title">Loading Track...</div>
+              <div class="player-card__track-artist" id="track-artist">...</div>
+            </div>
+
+            <!-- cool ahh waveform -->
+            <div class="waveform waveform-paused" id="waveform">
+              <span class="waveform__bar"></span>
+              <span class="waveform__bar"></span>
+              <span class="waveform__bar"></span>
+              <span class="waveform__bar"></span>
+              <span class="waveform__bar"></span>
+            </div>
+
+            <!-- controlling the player -->
+             <!-- restart -->
+            <div class="player-card__controls">
+              <button class="player-card__ctrl-btn" id="restart-btn" title="Restart Track">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="1 4 1 10 7 10"/>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                </svg>
+              </button>
+
+              <!-- play -->
+              <button class="player-card__play-btn" id="play-btn" title="Play / Pause">
+                <svg id="play-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </button>
+
+              <!-- share -->
+              <button class="player-card__ctrl-btn" id="share-btn" title="Share">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"/>
+                  <circle cx="6" cy="12" r="3"/>
+                  <circle cx="18" cy="19" r="3"/>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- volume -->
+             <div class="player-card__volume">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              </svg>
+
+              <input class="player-card__volume-slider" type="range" id="volume" min="0" max="100" value="60">
+              <span class="player-card__volume-val" id="vol-display">60%</span>
+             </div>
+
+             <!-- stats -->
+            <div class="player-card__stats">
+              <div class="player-card__stat-pill">
+                <strong id="listener-count">—</strong>&nbsp;listeners
+              </div>
+              <div class="player-card__stat-pill">
+                laut.fm
+              </div>
+            </div>
+
+            <!-- error -->
+            <p class="player-card__error" id="error-msg" hidden>
+              Could not connect to the stream. Try again later.
+            </p>
+          </div>
+
+          <!-- track history -->
+          <div class="player-card__history">
+            <h2 class="player-card__history-title">Recent Tracks</h2>
+            <div class="history-grid" id="history-list">
+              <p class="state-loading">Loading history…</p>
+            </div>
+          </div>
+
+        </article>
+      </div>
+    </section>
   </main>
   
     <!-- floating widget thingy -->
