@@ -1,33 +1,381 @@
 /* ===== custom properties ===== */
 :root {
   /* ფერების პალიტრა და დაშორებების ცვლადები */
+  --primary-color: #e67e22;
+  --bg-color: #fafafa;
+  --card-bg-color: #ffffff;
+  --text-color: #333333;
+  --spacing-unit: 1rem;
+  --border-radius: 8px;
 }
 
 /* ===== reset ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: var(--spacing-unit);
+  max-width: 1000px;
+  margin: 0 auto;
+}
 
 /* ===== header ===== */
+.site-header {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+}
 
 /* ===== nav — Flexbox აქ გამოიყენე ===== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-unit) 0;
+  border-bottom: 2px solid #eeeeee;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-unit);
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
 
 /* ===== login გვერდი ===== */
+.auth-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: var(--spacing-unit);
+}
+
+.auth-card {
+  background-color: var(--card-bg-color);
+  padding: calc(var(--spacing-unit) * 2.5);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-title {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  font-size: 1.8rem;
+  color: var(--text-color);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 1.25);
+  background: none;
+  border: none;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.15);
+  outline: none;
+}
+
+.form-submit-btn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.85rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.form-submit-btn:hover {
+  background-color: #d35400;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(230, 126, 34, 0.2);
+}
+
+.form-submit-btn:active {
+  transform: translateY(0);
+}
 
 /* ===== main ===== */
+main {
+  min-height: 70vh;
+}
+
+.hero-section {
+  text-align: center;
+  padding: calc(var(--spacing-unit) * 3) var(--spacing-unit);
+  background: linear-gradient(135deg, rgba(230, 126, 34, 0.1) 0%, rgba(243, 156, 18, 0.05) 100%);
+  border-radius: var(--border-radius);
+  margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #666666;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
 /* ===== form ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-unit);
+  background-color: var(--card-bg-color);
+  padding: calc(var(--spacing-unit) * 1.5);
+  border-radius: var(--border-radius);
+  border: 1px solid #e0e0e0;
+  max-width: 500px;
+  margin: var(--spacing-unit) 0;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+input, select, textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.2);
+}
+
+button[type="submit"] {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button[type="submit"]:hover {
+  background-color: #d35400;
+}
+
+/* საძიებო ფორმის ჰორიზონტალური Layout */
+.search-section {
+  margin-bottom: calc(var(--spacing-unit) * 2.5);
+}
+
+.search-form-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: var(--spacing-unit);
+  max-width: 100%;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.search-field-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.search-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.search-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  height: 48px; /* ველებთან თანაბარ სიმაღლეზე რომ იყოს */
+  transition: all 0.2s;
+}
+
+.search-btn:hover {
+  background-color: #d35400;
+}
 
 /* ===== results grid — CSS Grid აქ გამოიყენე ===== */
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-unit);
+  border-left: 4px solid var(--primary-color);
+  padding-left: 0.75rem;
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: calc(var(--spacing-unit) * 1.5);
+  margin-top: var(--spacing-unit);
+}
 
 /* ===== card ===== */
+.recipe-card {
+  background-color: var(--card-bg-color);
+  border-radius: var(--border-radius);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.recipe-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.recipe-card-body {
+  padding: var(--spacing-unit);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.5rem;
+}
+
+.recipe-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.recipe-card-category {
+  font-size: 0.85rem;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.recipe-card-btn {
+  margin-top: auto;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.recipe-card-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
 
 /* ===== saved grid — CSS Grid აქ გამოიყენე ===== */
 
 /* ===== ჩატვირთვის და შეცდომის მდგომარეობები ===== */
 
 /* ===== footer ===== */
+footer {
+  margin-top: calc(var(--spacing-unit) * 3);
+  padding: var(--spacing-unit) 0;
+  border-top: 1px solid #eeeeee;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+}
 
 /* ===== რესპონსიული ===== */
 @media (max-width: 600px) {
   /* მობილური */
+  nav {
+    flex-direction: column;
+    gap: var(--spacing-unit);
+  }
+
+  .search-form-layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-btn {
+    height: auto;
+  }
 }
 
 @media (min-width: 1024px) {

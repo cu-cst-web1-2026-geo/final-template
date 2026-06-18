@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>შესვლა</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -20,22 +21,24 @@
   </header>
 
   <main>
-    <section>
-      <h1>შესვლა</h1>
+    <section class="auth-section">
+      <div class="auth-card">
+        <h1 class="auth-title">შესვლა</h1>
 
-      <form action="index.html" method="get">
-        <div>
-          <label for="email">ელ-ფოსტა</label>
-          <input type="email" id="email" name="email" required>
-        </div>
+        <form class="auth-form" action="index.html" method="get">
+          <div class="form-group">
+            <label for="email" class="form-label">ელ-ფოსტა</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="შეიყვანეთ ელ-ფოსტა" required>
+          </div>
 
-        <div>
-          <label for="password">პაროლი</label>
-          <input type="password" id="password" name="password" required>
-        </div>
+          <div class="form-group">
+            <label for="password" class="form-label">პაროლი</label>
+            <input type="password" id="password" name="password" class="form-input" placeholder="შეიყვანეთ პაროლი" required>
+          </div>
 
-        <button type="submit">შესვლა</button>
-      </form>
+          <button type="submit" class="form-submit-btn">შესვლა</button>
+        </form>
+      </div>
     </section>
   </main>
 

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>რეცეპტების სამყარო</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -20,20 +21,20 @@
   </header>
 
   <main>
-    <section>
-      <h1>რეცეპტების სამყარო</h1>
-      <p>მოძებნეთ და აღმოაჩინეთ უგემრიელესი კერძების რეცეპტები მთელი მსოფლიოდან.</p>
+    <section class="hero-section">
+      <h1 class="hero-title">რეცეპტების სამყარო</h1>
+      <p class="hero-subtitle">მოძებნეთ და აღმოაჩინეთ უგემრიელესი კერძების რეცეპტები მთელი მსოფლიოდან.</p>
     </section>
 
-    <section>
-      <form>
-        <div>
-          <label for="search-input">ძიება:</label>
+    <section class="search-section">
+      <form id="search-form" class="search-form-layout">
+        <div class="search-field-group">
+          <label for="search-input" class="search-label">ძიება:</label>
           <input type="search" id="search-input" name="query" placeholder="ჩაწერეთ კერძის დასახელება..." required>
         </div>
 
-        <div>
-          <label for="category-select">კატეგორია:</label>
+        <div class="search-field-group">
+          <label for="category-select" class="search-label">კატეგორია:</label>
           <select id="category-select" name="category">
             <option value="">ყველა კატეგორია</option>
             <option value="beef">საქონლის ხორცი</option>
@@ -44,8 +45,16 @@
           </select>
         </div>
 
-        <button type="submit">ძიება</button>
+        <button type="submit" class="search-btn">ძიება</button>
       </form>
+    </section>
+
+    <!-- რეცეპტების ბარათების სექცია -->
+    <section class="results-section">
+      <h2 class="section-title">აღმოაჩინე რეცეპტები</h2>
+      <div id="results-grid" class="recipes-grid">
+        <!-- მომავალში აქ ჩაიწერება რეცეპტის ბარათები დინამიურად -->
+      </div>
     </section>
   </main>
 
