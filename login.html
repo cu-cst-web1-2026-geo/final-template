@@ -25,7 +25,7 @@
       <div class="auth-card">
         <h1 class="auth-title">შესვლა</h1>
 
-        <form class="auth-form" action="index.html" method="get">
+        <form id="login-form" class="auth-form" action="index.html" method="get">
           <div class="form-group">
             <label for="email" class="form-label">ელ-ფოსტა</label>
             <input type="email" id="email" name="email" class="form-input" placeholder="შეიყვანეთ ელ-ფოსტა" required>
@@ -37,10 +37,12 @@
           </div>
 
           <button type="submit" class="form-submit-btn">შესვლა</button>
+          <p id="login-feedback" class="form-feedback" hidden></p>
         </form>
       </div>
     </section>
   </main>
 
+  <script type="module" src="js/login.js"></script>
 </body>
 </html>
