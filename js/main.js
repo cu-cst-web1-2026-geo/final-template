@@ -13,6 +13,7 @@ const loadingMsg = document.getElementById('loading-msg');
 const errorMsg = document.getElementById('error-msg');
 const navUser = document.getElementById('nav-user');
 const logoutBtn = document.getElementById('logout-btn');
+const sortBtn = document.getElementById('sort-btn');
 
 // Closure debounce
 function debounce(fn, delay) {
@@ -155,6 +156,12 @@ regionFilter.addEventListener('change', () => {
 logoutBtn.addEventListener('click', () => {
   localStorage.removeItem('loggedInUser');
   window.location.href = 'login.html';
+});
+
+// მოსახლეობით დალაგება
+sortBtn.addEventListener('click', () => {
+  allCountries.sort((a, b) => b.population - a.population);
+  renderGrid(allCountries);
 });
 
 // Nav-ში მომხმარებლის სახელი
