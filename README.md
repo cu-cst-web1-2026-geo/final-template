@@ -1,3 +1,20 @@
+////////////////////////////////////
+
+netlify link:
+
+https://countriesreview.netlify.app/
+https://countriesreview.netlify.app/
+https://countriesreview.netlify.app/
+https://countriesreview.netlify.app/
+
+////////////////////////////////////
+
+
+
+
+
+
+
 # საბოლოო პროექტის შაბლონი
 
 ვებ ინჟინერია 2026-ის საბოლოო პროექტის საწყისი სტრუქტურა. გახსენი `index.html` ბრაუზერში და დაიწყე მშენებლობა.
