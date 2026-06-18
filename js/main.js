@@ -1,7 +1,9 @@
 import { fetchData, getSaved, setSaved } from './api.js';
-//State
+
+// State
 let allCountries = [];
-//DOM ელემენტები
+
+// DOM ელემენტები
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 const regionFilter = document.getElementById('region-filter');
@@ -11,7 +13,8 @@ const loadingMsg = document.getElementById('loading-msg');
 const errorMsg = document.getElementById('error-msg');
 const navUser = document.getElementById('nav-user');
 const logoutBtn = document.getElementById('logout-btn');
-//Closure debounce
+
+// Closure debounce
 function debounce(fn, delay) {
   let timer;
   return function (...args) {
@@ -19,7 +22,8 @@ function debounce(fn, delay) {
     timer = setTimeout(() => fn(...args), delay);
   };
 }
-//Loading/Error
+
+// Loading/Error
 function setLoading(isLoading) {
   loadingMsg.hidden = !isLoading;
   errorMsg.hidden = true;
@@ -29,49 +33,60 @@ function showError(msg) {
   errorMsg.hidden = false;
   loadingMsg.hidden = true;
 }
-//ბარათის შექმნა
+
+// ბარათის შექმნა
 function createCard(country) {
   const saved = getSaved();
-  const isSaved = saved.some(c => c.cca3 === country.cca3);
+  const isSaved = saved.some(c => c.codes.alpha_3 === country.codes.alpha_3);
+
   const card = document.createElement('div');
   card.className = 'card';
+
   const flag = document.createElement('img');
-  flag.src = country.flags.svg;
-  flag.alt = `${country.name.common}-ის დროშა`;
+  flag.src = country.flag.url_svg;
+  flag.alt = `${country.names.common}-ის დროშა`;
   flag.className = 'card__flag';
+
   const name = document.createElement('h2');
   name.className = 'card__name';
-  name.textContent = country.name.common;
+  name.textContent = country.names.common;
+
   const population = document.createElement('p');
   population.className = 'card__info';
   population.textContent = `მოსახლეობა: ${country.population.toLocaleString()}`;
+
   const region = document.createElement('p');
   region.className = 'card__info';
   region.textContent = `რეგიონი: ${country.region}`;
+
   const saveBtn = document.createElement('button');
   saveBtn.className = 'card__save-btn';
   saveBtn.textContent = isSaved ? 'შენახული' : 'შენახვა';
   saveBtn.type = 'button';
-  //Closure handler ახსოვს რომელ ქვეყანას ეკუთვნის
+
+  // Closure handler ახსოვს რომელ ქვეყანას ეკუთვნის
   saveBtn.addEventListener('click', () => {
     const current = getSaved();
-    const exists = current.some(c => c.cca3 === country.cca3);
+    const exists = current.some(c => c.codes.alpha_3 === country.codes.alpha_3);
     if (exists) {
-      setSaved(current.filter(c => c.cca3 !== country.cca3));
+      setSaved(current.filter(c => c.codes.alpha_3 !== country.codes.alpha_3));
       saveBtn.textContent = 'შენახვა';
     } else {
       setSaved([...current, country]);
       saveBtn.textContent = 'შენახული';
     }
   });
+
   card.appendChild(flag);
   card.appendChild(name);
   card.appendChild(population);
   card.appendChild(region);
   card.appendChild(saveBtn);
+
   return card;
 }
-//გრიდის რენდერი
+
+// გრიდის რენდერი
 function renderGrid(countries) {
   resultsGrid.innerHTML = '';
   if (countries.length === 0) {
@@ -83,20 +98,23 @@ function renderGrid(countries) {
     resultsGrid.appendChild(card);
   });
 }
-//ფილტრაცია
+
+// ფილტრაცია
 function filterCountries(search, region, large) {
   return allCountries.filter(c => {
-    const matchName = c.name.common.toLowerCase().includes(search.toLowerCase());
+    const matchName = c.names.common.toLowerCase().includes(search.toLowerCase());
     const matchRegion = region === '' || c.region === region;
     const matchLarge = !large || c.population >= 10000000;
     return matchName && matchRegion && matchLarge;
   });
 }
-//API-დან ჩატვირთვა
+
+// API-დან ჩატვირთვა
 async function loadCountries() {
   setLoading(true);
   try {
-    allCountries = await fetchData('/all');
+    const result = await fetchData('?limit=100');
+    allCountries = result.data.objects;
     renderGrid(allCountries);
   } catch (err) {
     showError('ქვეყნების ჩატვირთვა ვერ მოხერხდა. შეამოწმე ინტერნეტ კავშირი.');
@@ -104,7 +122,8 @@ async function loadCountries() {
     loadingMsg.hidden = true;
   }
 }
-//Events
+
+// Events
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const filtered = filterCountries(
@@ -114,6 +133,7 @@ searchForm.addEventListener('submit', (e) => {
   );
   renderGrid(filtered);
 });
+
 searchInput.addEventListener('input', debounce(() => {
   const filtered = filterCountries(
     searchInput.value,
@@ -122,6 +142,7 @@ searchInput.addEventListener('input', debounce(() => {
   );
   renderGrid(filtered);
 }, 400));
+
 regionFilter.addEventListener('change', () => {
   const filtered = filterCountries(
     searchInput.value,
@@ -130,19 +151,22 @@ regionFilter.addEventListener('change', () => {
   );
   renderGrid(filtered);
 });
+
 logoutBtn.addEventListener('click', () => {
   localStorage.removeItem('loggedInUser');
   window.location.href = 'login.html';
 });
-//Nav-ში მომხმარებლის სახელი
+
+// Nav-ში მომხმარებლის სახელი
 function loadNavUser() {
   const user = localStorage.getItem('loggedInUser');
   if (user) {
-    navUser.textContent = `${user}`;
+    navUser.textContent = `👤 ${user}`;
   } else {
     window.location.href = 'login.html';
   }
 }
-//გაშვება
+
+// გაშვება
 loadNavUser();
 loadCountries();
