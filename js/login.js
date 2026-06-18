@@ -1,25 +1,53 @@
-// უკვე ავტორიზებული მომხმარებელი — მთავარ გვერდზე გადამისამართება
-if (localStorage.getItem('user')) {
+//DOM ელემენტები
+const loginForm = document.getElementById('login-form');
+const usernameInput = document.getElementById('username');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const countrySelect = document.getElementById('country');
+const rememberCheckbox = document.getElementById('remember');
+const formError = document.getElementById('form-error');
+//ვალიდაციის ფუნქცია
+function validateForm(username, email, password, country) {
+  if (username.length < 2) {
+    return 'სახელი უნდა იყოს მინიმუმ 2 სიმბოლო';
+  }
+  if (!email.includes('@')) {
+    return 'ელ-ფოსტა არასწორია';
+  }
+  if (password.length < 6) {
+    return 'პაროლი უნდა იყოს მინიმუმ 6 სიმბოლო';
+  }
+  if (country === '') {
+    return 'აირჩიე რეგიონი';
+  }
+  return null;
+}
+//წარმატებული login-ის დამუშავება
+function handleLoginSuccess(username, country, remember) {
+  localStorage.setItem('loggedInUser', username);
+  localStorage.setItem('preferredRegion', country);
+  if (remember) {
+    localStorage.setItem('rememberMe', 'true');
+  }
   window.location.href = 'index.html';
 }
-
-document.getElementById('login-form').addEventListener('submit', (e) => {
+//submit event
+loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
-
-  const name = document.getElementById('name-input').value.trim();
-  const errorEl = document.getElementById('login-error');
-
-  if (!name) {
-    errorEl.textContent = 'გთხოვთ შეიყვანოთ სახელი.';
-    errorEl.hidden = false;
+  const username = usernameInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = passwordInput.value;
+  const country = countrySelect.value;
+  const remember = rememberCheckbox.checked;
+  const errorText = validateForm(username, email, password, country);
+  if (errorText) {
+    formError.textContent = errorText;
     return;
   }
-
-  errorEl.hidden = true;
-
-  // მომხმარებლის სახელი ინახება localStorage-ში, სეტდება სესიური cookie
-  localStorage.setItem('user', name);
-  document.cookie = 'authorized=true; path=/';
-
-  window.location.href = 'index.html';
+  formError.textContent = '';
+  handleLoginSuccess(username, country, remember);
+});
+//input event შეცდომის გასუფთავება ტექსტის შეცვლისას
+usernameInput.addEventListener('input', () => {
+  formError.textContent = '';
 });

@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>შენახული — პროექტის სახელი</title>
+  <title>შენახული ქვეყნები | ქვეყნების მიმოხილვა</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
   <header>
     <nav>
-      <span class="nav__logo">პროექტის სახელი</span>
+      <span class="nav__logo">ქვეყნების მიმოხილვა</span>
       <div class="nav__links">
         <a href="index.html">ძიება</a>
         <a href="saved.html">შენახული</a>
@@ -21,21 +20,21 @@
       </div>
     </nav>
   </header>
-
   <main>
-
-    <section>
-      <h2>შენახული ელემენტები</h2>
-      <p id="saved-empty" hidden>ჯერ არაფერია შენახული.</p>
-      <div id="saved-grid"></div>
+    <section class="saved-section">
+      <h1 class="saved__title">შენახული ქვეყნები</h1>
+      <!-- ჩართვა და შეცდომა -->
+      <p id="loading-msg" hidden>იტვირთება…</p>
+      <p id="error-msg" hidden></p>
+      <p id="empty-msg" hidden>შენახული ქვეყანა არ გაქვს ჯერ.</p>
+      <!--ბარათები-->
+      <div id="saved-grid" class="saved-grid"></div>
     </section>
-
   </main>
-
   <footer>
-    <!-- footer-ის შიგთავსი -->
+    <p>© 2026 ქვეყნების მიმოხილვა | მონაცემები: REST Countries API</p>
   </footer>
-
   <script type="module" src="js/saved.js"></script>
 </body>
 </html>
+

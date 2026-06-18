@@ -3,25 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>შესვლა — პროექტის სახელი</title>
+  <title>შესვლა | ქვეყნების მიმოხილვა</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+  <header>
+    <nav>
+      <span class="nav__logo">🌍 ქვეყნების მიმოხილვა</span>
+      <div class="nav__links">
+        <a href="index.html">ძიება</a>
+        <a href="saved.html">შენახული</a>
+      </div>
+      <div class="nav__actions"></div>
+    </nav>
+  </header>
   <main>
-
-    <form id="login-form">
-      <!-- input type="text" ვალიდაციის ატრიბუტებით -->
-      <label for="name-input">შენი სახელი</label>
-      <input id="name-input" type="text" name="name" required minlength="2" autocomplete="name">
-
-      <p id="login-error" hidden></p>
-
-      <button type="submit">დაწყება →</button>
-    </form>
-
+    <section class="login-section">
+      <form id="login-form" class="login-form" novalidate>
+        <h1>შესვლა</h1>
+        <!--text — სახელი -->
+        <div class="form__group">
+          <label for="username">სახელი</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="შენი სახელი"
+            minlength="2"
+            required
+          />
+        </div>
+        <!--email -->
+        <div class="form__group">
+          <label for="email">ელ-ფოსტა</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@mail.com"
+            required
+          />
+        </div>
+        <!--password -->
+        <div class="form__group">
+          <label for="password">პაროლი</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="მინიმუმ 6 სიმბოლო"
+            minlength="6"
+            required
+          />
+        </div>
+        <!--select -->
+        <div class="form__group">
+          <label for="country">საყვარელი რეგიონი</label>
+          <select id="country" name="country" required>
+            <option value="">აირჩიე რეგიონი</option>
+            <option value="Africa">აფრიკა</option>
+            <option value="Americas">ამერიკა</option>
+            <option value="Asia">აზია</option>
+            <option value="Europe">ევროპა</option>
+            <option value="Oceania">ოკეანია</option>
+          </select>
+        </div>
+        <!-- ტიპი 5: checkbox -->
+        <div class="form__group">
+          <label class="form__checkbox">
+            <input type="checkbox" id="remember" name="remember">
+            დამიმახსოვრე
+          </label>
+        </div>
+        <!-- შეცდომის შეტყობინება -->
+        <p class="form__error" id="form-error"></p>
+        <button type="submit">შესვლა</button>
+      </form>
+    </section>
   </main>
-
+  <footer>
+    <p>© 2026 ქვეყნების მიმოხილვა | მონაცემები: REST Countries API</p>
+  </footer>
   <script type="module" src="js/login.js"></script>
 </body>
 </html>
