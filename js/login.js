@@ -1,25 +1,42 @@
-// უკვე ავტორიზებული მომხმარებელი — მთავარ გვერდზე გადამისამართება
-if (localStorage.getItem('user')) {
-  window.location.href = 'index.html';
-}
+const loginForm = document.getElementById('login-form');
+const feedback = document.getElementById('login-feedback');
 
-document.getElementById('login-form').addEventListener('submit', (e) => {
+loginForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const name = document.getElementById('name-input').value.trim();
-  const errorEl = document.getElementById('login-error');
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
 
-  if (!name) {
-    errorEl.textContent = 'გთხოვთ შეიყვანოთ სახელი.';
-    errorEl.hidden = false;
+  // საბაზისო ვალიდაცია JavaScript-ით
+  if (!email || !password) {
+    showFeedback('გთხოვთ შეავსოთ ყველა ველი!', 'error');
     return;
   }
 
-  errorEl.hidden = true;
+  if (password.length < 6) {
+    showFeedback('პაროლი უნდა შედგებოდეს მინიმუმ 6 სიმბოლოსგან!', 'error');
+    return;
+  }
 
-  // მომხმარებლის სახელი ინახება localStorage-ში, სეტდება სესიური cookie
-  localStorage.setItem('user', name);
-  document.cookie = 'authorized=true; path=/';
+  // წარმატებული ავტორიზაცია
+  showFeedback('ავტორიზაცია წარმატებულია! გადამისამართება...', 'success');
+  
+  // ვინახავთ მომხმარებლის ელ-ფოსტას მეხსიერებაში
+  localStorage.setItem('user', email);
 
-  window.location.href = 'index.html';
+  // გადამისამართება index.html-ზე 1 წამის შემდეგ, რათა მომხმარებელმა მოასწროს წარმატების შეტყობინების დანახვა
+  setTimeout(() => {
+    window.location.href = 'index.html';
+  }, 1000);
 });
+
+function showFeedback(message, type) {
+  feedback.textContent = message;
+  feedback.hidden = false;
+  
+  if (type === 'error') {
+    feedback.className = 'form-feedback form-feedback--error';
+  } else {
+    feedback.className = 'form-feedback form-feedback--success';
+  }
+}

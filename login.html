@@ -3,23 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>შესვლა — პროექტის სახელი</title>
+  <title>შესვლა</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <main>
+  <main class="auth-main">
+    <section class="auth-card">
+        <h1 class="auth-title">შესვლა</h1>
+        <form id="login-form" class="auth-form" action="index.html" method="get">
+          <div class="form-group">
+            <label for="email" class="form-label">ელ-ფოსტა</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="შეიყვანეთ ელ-ფოსტა" required>
+          </div>
 
-    <form id="login-form">
-      <!-- input type="text" ვალიდაციის ატრიბუტებით -->
-      <label for="name-input">შენი სახელი</label>
-      <input id="name-input" type="text" name="name" required minlength="2" autocomplete="name">
+          <div class="form-group">
+            <label for="password" class="form-label">პაროლი</label>
+            <input type="password" id="password" name="password" class="form-input" placeholder="შეიყვანეთ პაროლი" required>
+          </div>
 
-      <p id="login-error" hidden></p>
-
-      <button type="submit">დაწყება →</button>
-    </form>
-
+          <button type="submit" class="form-submit-btn">შესვლა</button>
+          <p id="login-feedback" class="form-feedback" hidden></p>
+        </form>
+    </section>
   </main>
 
   <script type="module" src="js/login.js"></script>
